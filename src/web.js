@@ -1,5 +1,3 @@
-
-
 /**
  * a标签下载文件（可能存在跨域问题）
  * @env browser
@@ -20,16 +18,22 @@ export function downloadFileWithATag(url, fileName) {
 }
 
 /**
- * 获取文件hash值
- * @env node
- * @param {string} filePath 
- * @returns 
+ * 将style字符串转为对象
+ * @param {string} str 
+ * @returns object
  */
-export function getFileHash(filePath = '') {
-  const fs = require('fs');
-  const file =  fs.readFileSync(__dirname + filePath, 'utf-8');
-  const crypto = require('crypto');
-  const hash = crypto.createHash('sha1');
-  const result = hash.update(file).digest('hex');
-  return result;
+export function styleStrToObj(str = '') {
+  let propArr = str.split(';')
+  let obj = {}
+  propArr.forEach(prop => {
+    if (prop) {
+      let arr = prop.split(':')
+      let key = arr[0] || ''
+      let value = arr[1] || ''
+      if (key) {
+        obj[key.trim()] = value.trim()
+      }
+    }
+  })
+  return obj
 }
