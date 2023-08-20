@@ -1,20 +1,23 @@
 {
   "name": "@alanlee97/utils",
-  "version": "0.0.1-beta.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "files": [
-    "dist"
+    "dist",
+    "examples"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./src/index.js",
-    "build": "rollup -c",
+    "build:cli": "rollup -c",
+    "build": "node ./scripts/build.js",
     "pub": "npm publish --access public"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@alanlee97/utils": "^0.0.1-beta.1"
+  "devDependencies": {
+    "rollup": "^3.28.0"
   }
 }

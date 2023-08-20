@@ -37,7 +37,3 @@ export function styleStrToObj(str = '') {
   })
   return obj
 }
-
-export function test() {
-  console.log('test build')
-}
