@@ -1,6 +1,10 @@
 const pluginBabel = require('@rollup/plugin-babel');
+const pluginTerser = require('@rollup/plugin-terser');
 
-const plugins = [pluginBabel({ babelHelpers: 'bundled' })];
+const plugins = [
+  pluginBabel({ babelHelpers: 'bundled' }),
+  pluginTerser(),
+];
 module.exports = [
   {
     input: 'src/index.js',
