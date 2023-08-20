@@ -16,5 +16,8 @@ module.exports = {
     'no-param-reassign': 1,
     'import/prefer-default-export': 0,
     'global-require': 1,
+    'default-param-last': 1,
+    'prefer-const': 1,
+    'max-len': 0,
   },
 };
