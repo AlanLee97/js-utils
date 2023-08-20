@@ -1,24 +1,30 @@
+const pluginBabel = require('@rollup/plugin-babel');
+
+const plugins = [pluginBabel({ babelHelpers: 'bundled' })];
 module.exports = [
   {
     input: 'src/index.js',
     output: {
       file: 'dist/index.esm.js',
-      format: 'es'
-    }
+      format: 'es',
+    },
+    plugins,
   },
   {
     input: 'src/index.js',
     output: {
       file: 'dist/index.common.js',
-      format: 'cjs'
-    }
+      format: 'cjs',
+    },
+    plugins,
   },
   {
     input: 'src/index.js',
     output: {
       file: 'dist/index.js',
       format: 'umd',
-      name: 'JSUtils'
-    }
-  }
-]
+      name: 'JSUtils',
+    },
+    plugins,
+  },
+];

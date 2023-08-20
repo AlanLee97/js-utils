@@ -19,5 +19,6 @@ module.exports = {
     'default-param-last': 1,
     'prefer-const': 1,
     'max-len': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };
