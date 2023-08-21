@@ -28,3 +28,19 @@ export function downloadFileInExtractFile(url, fileName) {
   a.click();
   document.body.removeChild(a);
 }
+
+/**
+ * 检查元素是否出现在屏幕区域
+ * @param {HTMLElement} el
+ * @returns
+ */
+export function checkElementInWindowArea(el) {
+  if (!el || !(el instanceof HTMLElement)) return false;
+  const bounding = el.getBoundingClientRect();
+  const { innerHeight, innerWidth } = window;
+  const topAppear = bounding.top > 0 && bounding.top < innerHeight;
+  const bottomAppear = bounding.bottom > 0 && bounding.bottom < innerHeight;
+  const leftAppear = bounding.left > 0 && bounding.left < innerWidth;
+  const rightAppear = bounding.right > 0 && bounding.right < innerWidth;
+  return (topAppear || bottomAppear) && (leftAppear || rightAppear);
+}
