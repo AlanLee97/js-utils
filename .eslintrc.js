@@ -20,5 +20,6 @@ module.exports = {
     'prefer-const': 1,
     'max-len': 0,
     'import/no-extraneous-dependencies': 0,
+    'linebreak-style': 0,
   },
 };

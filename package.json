@@ -4,7 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "keywords": ["utils", "javascript function utils", "tool function", "js-utils", "JSUtils"],
+  "keywords": [
+    "utils",
+    "javascript function utils",
+    "tool function",
+    "js-utils",
+    "JSUtils"
+  ],
   "files": [
     "dist",
     "examples"

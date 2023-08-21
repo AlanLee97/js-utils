@@ -123,3 +123,14 @@ export function dateFormat(date, format = {}) {
   }
   return `${year}${dateSeparator}${month}${dateSeparator}${day} ${hour}${timeSeparator}${minute}${timeSeparator}${second}`;
 }
+
+// 过滤掉对象的空属性
+export function filterEmptyProp(target = {}) {
+  const obj = {};
+  Object.keys(target).forEach((key) => {
+    if (!['', null, undefined].includes(target[key])) {
+      obj[key] = target[key];
+    }
+  });
+  return obj;
+}
