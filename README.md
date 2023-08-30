@@ -12,6 +12,21 @@
 - styleStrToObj: 样式字符串转对象
 
 # 用法
+## 安装
+
+```bash
+npm i @alanlee97/utils -S
+```
+
+> 或者，CDN引入
+> ```html
+> <script src="https://unpkg.com/@alanlee97/utils/dist/index.js"></script>
+> <script>
+>   JSUtils.hello();
+> </script>
+> ```
+
+## 使用方法
 CommonJS规范用法：
 ```javascript
 const { hello } = require('@alanlee97/utils');
