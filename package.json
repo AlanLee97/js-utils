@@ -33,6 +33,7 @@
     "@rollup/plugin-terser": "^0.4.3",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-alanlee": "0.0.1",
     "eslint-plugin-import": "^2.28.1",
     "rollup": "^3.28.0"
   }
