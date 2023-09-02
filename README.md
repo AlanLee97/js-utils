@@ -10,6 +10,7 @@
 - mergeObj: 合并对象
 - numberPaddingZero: 数字填充0
 - styleStrToObj: 样式字符串转对象
+- className: 拼接class类名
 
 # 用法
 ## 安装

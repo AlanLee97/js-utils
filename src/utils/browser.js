@@ -44,3 +44,23 @@ export function checkElementInWindowArea(el) {
   const rightAppear = bounding.right > 0 && bounding.right < innerWidth;
   return (topAppear || bottomAppear) && (leftAppear || rightAppear);
 }
+
+/**
+ * 拼接class类名
+ * @env browser
+ * @param {string|array} args
+ * @returns {string}
+ */
+export function className(...args) {
+  const names = [...args];
+  let res = '';
+  names.forEach((name) => {
+    if (Array.isArray(name)) {
+      res += Array.from(new Set(name)).join(' ').trim();
+    } else {
+      res += `${name} `;
+    }
+  });
+
+  return res.trim();
+}
