@@ -1,3 +1,3 @@
-const { dateFormat } = require('./dist/index.js');
+const { dateFormat } = require('./browser/index.js');
 
 console.log('alan->dateFormat', dateFormat(new Date()));

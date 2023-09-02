@@ -9,7 +9,7 @@ module.exports = {
   // parserOptions: {
   //   ecmaVersion: 'latest',
   // },
-  // ignorePatterns: ['dist/*.js'],
+  ignorePatterns: ['dist/**/*.js'],
   // rules: {
   //   // 0 - off, 1 - warn, 2 - error
   // },

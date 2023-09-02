@@ -1,9 +1,9 @@
 {
   "name": "@alanlee97/utils",
-  "version": "0.0.7",
-  "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "version": "0.0.9-dev.3",
+  "description": "Collects some functions which I used frequently.",
+  "main": "browser/index.js",
+  "module": "browser/index.esm.js",
   "keywords": [
     "utils",
     "javascript function utils",
@@ -12,7 +12,8 @@
     "JSUtils"
   ],
   "files": [
-    "dist",
+    "browser",
+    "node",
     "examples"
   ],
   "scripts": {
