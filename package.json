@@ -1,6 +1,6 @@
 {
   "name": "@alanlee97/utils",
-  "version": "0.0.9-dev.3",
+  "version": "0.0.10",
   "description": "Collects some functions which I used frequently.",
   "main": "browser/index.js",
   "module": "browser/index.esm.js",
