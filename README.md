@@ -20,7 +20,7 @@ npm i @alanlee97/utils -S
 
 > 或者，CDN引入
 > ```html
-> <script src="https://unpkg.com/@alanlee97/utils/dist/index.js"></script>
+> <script src="https://unpkg.com/@alanlee97/utils/browser/index.js"></script>
 > <script>
 >   JSUtils.hello();
 > </script>
@@ -37,6 +37,8 @@ ES Module规范用法：
 ```javascript
 // You should add `"type": "module"` to package.json.
 import { hello } from '@alanlee97/utils';
+// import { hello } from '@alanlee97/utils/node'; // node env fns.
+
 hello();
 ```
 
@@ -44,7 +46,7 @@ script type=module
 ```html
 <!-- You should run html file with server. -->
 <script type="module">
-    import { hello } from './dist/index.esm.js';
+    import { hello } from '@alanlee97/utils';
     hello();
 </script>
 ```
@@ -52,5 +54,7 @@ script type=module
 UMD规范用法：
 ```javascript
 const JSUtils = require('@alanlee97/utils');
+// const { hello } = require('@alanlee97/utils/node'); // node env fns.
+
 JSUtils.hello();
 ```
