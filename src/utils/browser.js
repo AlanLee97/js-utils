@@ -64,3 +64,139 @@ export function className(...args) {
 
   return res.trim();
 }
+
+/**
+ * 获取移动的坐标相关信息
+ * @env browser
+ * @param {object} options
+ * @returns {object}
+ */
+export class MoveInfo {
+  constructor(options = {}) {
+    this.x = 0;
+    this.y = 0;
+    this.moveX = 0;
+    this.moveY = 0;
+    this.startX = 0;
+    this.startY = 0;
+    this.endX = 0;
+    this.endY = 0;
+
+    const {
+      callback = () => {}, trigger = 'auto', ceil = 0, floor = 0,
+    } = options;
+
+    this.ceil = ceil;
+    this.floor = window.innerHeight - floor;
+
+    this.callback = callback;
+    this.trigger = trigger || 'auto'; // auto-自动触发， press-按下触发
+    this.triggered = trigger === 'auto';
+
+    this.register();
+  }
+
+  on = () => {
+    if (typeof this.callback === 'function') {
+      const {
+        x, y, moveX, moveY, startX, startY, endX, endY,
+      } = this;
+      this.callback({
+        x, y, moveX, moveY, startX, startY, endX, endY,
+      });
+    }
+  };
+
+  onStart = (e) => {
+    this.triggered = this.trigger === 'press';
+    let x = 0; let
+      y = 0;
+    if (e instanceof TouchEvent) {
+      this.triggered = true; // h5自动触发
+      const { clientX, clientY } = e.changedTouches[0] || {};
+      x = clientX;
+      y = clientY;
+    }
+    if (e instanceof MouseEvent) {
+      const { clientX, clientY } = e || {};
+      x = clientX;
+      y = clientY;
+    }
+    this.startX = x;
+    this.startY = y;
+  };
+
+  onMove = (e) => {
+    let mvX = 0; let
+      mvY = 0;
+    if (e instanceof TouchEvent) {
+      const { clientX, clientY } = e.changedTouches[0] || {};
+      mvX = clientX;
+      mvY = clientY;
+    }
+    if (e instanceof MouseEvent) {
+      const { clientX, clientY } = e || {};
+      mvX = clientX;
+      mvY = clientY;
+    }
+
+    if (mvY < this.ceil) {
+      mvY = this.ceil;
+    }
+
+    if (mvY > this.floor) {
+      mvY = this.floor;
+    }
+
+    this.x = mvX;
+    this.y = mvY;
+
+    this.moveX = mvX - this.startX;
+    this.moveY = mvY - this.startY;
+
+    if (this.triggered) {
+      this.on();
+    }
+  };
+
+  onEnd = (e) => {
+    if (this.trigger === 'press') {
+      this.triggered = false;
+      return;
+    }
+    let x = 0; let
+      y = 0;
+    if (e instanceof TouchEvent) {
+      const { clientX, clientY } = e.changedTouches[0] || {};
+      x = clientX;
+      y = clientY;
+    }
+    if (e instanceof MouseEvent) {
+      const { clientX, clientY } = e || {};
+      x = clientX;
+      y = clientY;
+    }
+    this.endX = x;
+    this.endY = y;
+  };
+
+  register() {
+    window.addEventListener('touchstart', this.onStart);
+    window.addEventListener('touchmove', this.onMove);
+    window.addEventListener('touchend', this.onEnd);
+
+    window.addEventListener('mousedown', this.onStart);
+    window.addEventListener('mousemove', this.onMove);
+    window.addEventListener('mouseup', this.onEnd);
+  }
+
+  destroy() {
+    window.removeEventListener('touchstart', this.onStart);
+    window.removeEventListener('touchmove', this.onMove);
+    window.removeEventListener('touchend', this.onEnd);
+
+    window.removeEventListener('mousedown', this.onStart);
+    window.removeEventListener('mousemove', this.onMove);
+    window.removeEventListener('mouseup', this.onEnd);
+  }
+}
