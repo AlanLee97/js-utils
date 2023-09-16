@@ -200,7 +200,7 @@ export class MoveInfo {
     this.on('onEnd');
   };
 
-  register() {
+  register = () => {
     window.addEventListener('touchstart', this.handleStart);
     window.addEventListener('touchmove', this.handleMove);
     window.addEventListener('touchend', this.handleEnd);
@@ -208,9 +208,9 @@ export class MoveInfo {
     window.addEventListener('mousedown', this.handleStart);
     window.addEventListener('mousemove', this.handleMove);
     window.addEventListener('mouseup', this.handleEnd);
-  }
+  };
 
-  destroy() {
+  destroy = () => {
     window.removeEventListener('touchstart', this.handleStart);
     window.removeEventListener('touchmove', this.handleMove);
     window.removeEventListener('touchend', this.handleEnd);
@@ -218,5 +218,5 @@ export class MoveInfo {
     window.removeEventListener('mousedown', this.handleStart);
     window.removeEventListener('mousemove', this.handleMove);
     window.removeEventListener('mouseup', this.handleEnd);
-  }
+  };
 }
