@@ -82,32 +82,48 @@ export class MoveInfo {
     this.endX = 0;
     this.endY = 0;
 
+    this.initCallback(options);
+
     const {
-      callback = () => {}, trigger = 'auto', ceil = 0, floor = 0,
+      trigger = 'auto',
+      ceil = 0,
+      floor = 0,
     } = options;
 
     this.ceil = ceil;
     this.floor = window.innerHeight - floor;
 
-    this.callback = callback;
     this.trigger = trigger || 'auto'; // auto-自动触发， press-按下触发
     this.triggered = trigger === 'auto';
 
     this.register();
   }
 
-  on = () => {
-    if (typeof this.callback === 'function') {
+  initCallback = (options = {}) => {
+    const noop = () => {};
+    const {
+      onStart = noop,
+      onMove = noop,
+      onEnd = noop,
+    } = options;
+
+    this.onStart = onStart;
+    this.onMove = onMove;
+    this.onEnd = onEnd;
+  };
+
+  on = (name = 'onMove') => {
+    if (typeof this[name] === 'function') {
       const {
         x, y, moveX, moveY, startX, startY, endX, endY,
       } = this;
-      this.callback({
+      this[name]({
         x, y, moveX, moveY, startX, startY, endX, endY,
       });
     }
   };
 
-  onStart = (e) => {
+  handleStart = (e) => {
     this.triggered = this.trigger === 'press';
     let x = 0; let
       y = 0;
@@ -124,9 +140,11 @@ export class MoveInfo {
     }
     this.startX = x;
     this.startY = y;
+
+    this.on('onStart');
   };
 
-  onMove = (e) => {
+  handleMove = (e) => {
     let mvX = 0; let
       mvY = 0;
     if (e instanceof TouchEvent) {
@@ -159,7 +177,7 @@ export class MoveInfo {
     }
   };
 
-  onEnd = (e) => {
+  handleEnd = (e) => {
     if (this.trigger === 'press') {
       this.triggered = false;
       return;
@@ -178,25 +196,27 @@ export class MoveInfo {
     }
     this.endX = x;
     this.endY = y;
+
+    this.on('onEnd');
   };
 
   register() {
-    window.addEventListener('touchstart', this.onStart);
-    window.addEventListener('touchmove', this.onMove);
-    window.addEventListener('touchend', this.onEnd);
+    window.addEventListener('touchstart', this.handleStart);
+    window.addEventListener('touchmove', this.handleMove);
+    window.addEventListener('touchend', this.handleEnd);
 
-    window.addEventListener('mousedown', this.onStart);
-    window.addEventListener('mousemove', this.onMove);
-    window.addEventListener('mouseup', this.onEnd);
+    window.addEventListener('mousedown', this.handleStart);
+    window.addEventListener('mousemove', this.handleMove);
+    window.addEventListener('mouseup', this.handleEnd);
   }
 
   destroy() {
-    window.removeEventListener('touchstart', this.onStart);
-    window.removeEventListener('touchmove', this.onMove);
-    window.removeEventListener('touchend', this.onEnd);
+    window.removeEventListener('touchstart', this.handleStart);
+    window.removeEventListener('touchmove', this.handleMove);
+    window.removeEventListener('touchend', this.handleEnd);
 
-    window.removeEventListener('mousedown', this.onStart);
-    window.removeEventListener('mousemove', this.onMove);
-    window.removeEventListener('mouseup', this.onEnd);
+    window.removeEventListener('mousedown', this.handleStart);
+    window.removeEventListener('mousemove', this.handleMove);
+    window.removeEventListener('mouseup', this.handleEnd);
   }
 }
