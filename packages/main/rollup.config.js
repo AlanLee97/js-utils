@@ -23,7 +23,7 @@ const buildBrowser = [
   {
     ...baseConfig,
     output: {
-      file: 'dist/index.mjs',
+      file: 'dist/browser/es/index.mjs',
       format: 'es',
       exports: 'named',
       globals: {
@@ -34,7 +34,7 @@ const buildBrowser = [
   {
     ...baseConfig,
     output: {
-      file: 'dist/index.cjs',
+      file: 'dist/browser/lib/index.js',
       format: 'cjs',
       exports: 'named',
       globals: {
@@ -45,7 +45,7 @@ const buildBrowser = [
   {
     ...baseConfig,
     output: {
-      file: 'dist/index.js',
+      file: 'dist/browser/index.js',
       format: 'umd',
       name: 'JSUtils',
       exports: 'named',
@@ -61,7 +61,7 @@ const buildNode = [
   {
     input: 'src/index.node.js',
     output: {
-      file: 'node/index.mjs',
+      file: 'dist/node/es/index.mjs',
       format: 'es',
     },
     plugins,
@@ -69,7 +69,7 @@ const buildNode = [
   {
     input: 'src/index.node.js',
     output: {
-      file: 'node/index.cjs',
+      file: 'dist/node/lib/index.js',
       format: 'cjs',
     },
     plugins,
@@ -77,7 +77,7 @@ const buildNode = [
   {
     input: 'src/index.node.js',
     output: {
-      file: 'node/index.js',
+      file: 'dist/node/index.js',
       format: 'umd',
       name: 'JSUtils',
     },

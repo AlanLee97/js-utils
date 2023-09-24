@@ -63,7 +63,17 @@ importers:
 
   packages/common: {}
 
-  packages/main: {}
+  packages/main:
+    dependencies:
+      '@alanlee97/utils-browser':
+        specifier: workspace:*
+        version: link:../browser
+      '@alanlee97/utils-common':
+        specifier: workspace:*
+        version: link:../common
+      '@alanlee97/utils-node':
+        specifier: workspace:*
+        version: link:../node
 
   packages/move-info: {}
 

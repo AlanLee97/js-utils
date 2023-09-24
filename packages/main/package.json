@@ -1,11 +1,10 @@
 {
   "name": "@alanlee97/js-utils",
-  "version": "0.0.0-dev.5",
+  "version": "0.0.0-dev.6",
   "description": "",
   "main": "index.js",
   "files": [
-    "dist",
-    "node"
+    "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,19 +15,19 @@
   "exports": {
     ".": {
       "import": {
-        "node": "./dist/index.mjs",
-        "default": "./dist/index.mjs"
+        "node": "./dist/browser/es/index.mjs",
+        "default": "./dist/browser/es/index.mjs"
       },
-      "require": "./dist/index.js"
+      "require": "./dist/browser/lib/index.js"
     },
     "./node": {
       "import": {
-        "node": "./node/index.mjs",
-        "default": "./node/index.mjs"
+        "node": "./dist/node/es/index.mjs",
+        "default": "./dist/node/es/index.mjs"
       },
-      "require": "./node/index.js"
+      "require": "./dist/browser/lib/index.js"
     },
-    "./*": "./*"
+    "./*": "./dist/*"
   },
   "keywords": [],
   "author": "",
