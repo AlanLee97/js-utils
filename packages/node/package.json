@@ -1,0 +1,31 @@
+{
+  "name": "@alanlee97/utils-node",
+  "version": "0.0.0-dev.1",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "pnpm publish --access public",
+    "build": "node ./scripts/build.js",
+    "build:cli": "rollup -c"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "node": "./dist/index.mjs",
+        "default": "./dist/index.mjs"
+      },
+      "require": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

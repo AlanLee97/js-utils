@@ -1,7 +1,7 @@
 {
-  "name": "@alanlee97/utils",
+  "private": true,
   "version": "0.0.10-dev.2",
-  "description": "Collects some functions which I used frequently.",
+  "description": "Collects some functions those I used frequently.",
   "main": "browser/index.js",
   "module": "browser/index.esm.js",
   "keywords": [
@@ -11,21 +11,24 @@
     "js-utils",
     "JSUtils"
   ],
-  "files": [
-    "browser",
-    "node",
-    "examples"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node ./src/index.js",
     "build:cli": "rollup -c",
+    "build:pnpm": "pnpm --filter ./packages/** run build",
     "build": "node ./scripts/build.js",
     "pub": "npm publish --access public",
     "lint": "eslint src --fix"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@alanlee97/js-utils": "workspace:*",
+    "@alanlee97/utils-browser": "workspace:*",
+    "@alanlee97/utils-move-info": "workspace:*",
+    "@alanlee97/utils-node": "workspace:*",
+    "@alanlee97/utils-common": "workspace:*"
+  },
   "devDependencies": {
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
