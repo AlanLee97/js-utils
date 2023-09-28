@@ -1,11 +1,11 @@
 const pluginBabel = require('@rollup/plugin-babel');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
-// const pluginTerser = require('@rollup/plugin-terser');
+const pluginTerser = require('@rollup/plugin-terser');
 
 const plugins = [
   pluginBabel({ babelHelpers: 'bundled' }),
   nodeResolve(),
-  // pluginTerser(),
+  pluginTerser(),
 ];
 
 const baseConfig = {
