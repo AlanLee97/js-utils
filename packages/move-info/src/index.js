@@ -153,9 +153,3 @@ export class MoveInfo {
     window.removeEventListener('mouseup', this.handleEnd);
   };
 }
-
-console.log('move info');
-
-export function hello() {
-  console.log('hello move-info');
-}
