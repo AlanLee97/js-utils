@@ -17,7 +17,7 @@
     "build:cli": "rollup -c",
     "build:pnpm": "pnpm --filter ./packages/** run build",
     "build": "node ./scripts/build.js",
-    "pub": "npm publish --access public",
+    "pub": "cd ./packages/main && pnpm publish --access public",
     "lint": "eslint src --fix"
   },
   "author": "",
